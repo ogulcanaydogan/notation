@@ -24,11 +24,6 @@ import (
 )
 
 func TestNewAuthClient(t *testing.T) {
-	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(http.StatusOK)
-	}))
-	defer ts.Close()
-
 	t.Run("nil client", func(t *testing.T) {
 		client := NewAuthClient(context.Background(), nil)
 		if client == nil {
